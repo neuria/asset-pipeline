@@ -103,7 +103,25 @@ namespace Daihenka.AssetPipeline
         {
             if (!iconMat || !iconMat.shader)
             {
-                var shader = ShaderUtil.CreateShaderAsset(System.IO.File.ReadAllText("Packages/com.daihenka.assetpipeline/Editor/Assets/GUIIcon.shader"));
+                var guids = AssetDatabase.FindAssets("t:Shader GUIIcon", new string[] { "Assets", "Packages" });
+                Shader shader = null;
+
+                foreach (var guid in guids)
+                {
+                    var path = AssetDatabase.GUIDToAssetPath(guid);
+                    var wasAssetLoaded = AssetDatabase.IsMainAssetAtPathLoaded(path);
+                    var foundShader = AssetDatabase.LoadAssetAtPath<Shader>(path);
+
+                    if (foundShader.name == "Hidden/Daihenka/Editor/GUIIcon")
+                    {
+                        shader = foundShader;
+                        break;
+                    }
+
+                    if (wasAssetLoaded != true)
+                        Resources.UnloadAsset(foundShader);
+                }
+
                 iconMat = new Material(shader);
             }
 
