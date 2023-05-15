@@ -33,7 +33,7 @@ namespace Daihenka.AssetPipeline.Processors
             var targetPath = prefabPathType.GetFolderPath(assetPath, prefabPath, targetFolder);
             targetPath = Path.Combine(targetPath, $"{Path.GetFileNameWithoutExtension(assetPath)}.prefab");
 
-            var prefabInstance = Instantiate(asset) as GameObject;
+            var prefabInstance = PrefabUtility.InstantiatePrefab(asset) as GameObject;
 
             if (applyTag)
             {
