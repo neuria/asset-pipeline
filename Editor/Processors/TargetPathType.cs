@@ -1,6 +1,6 @@
 ﻿namespace Daihenka.AssetPipeline.Processors
 {
-    public enum TargetPathType
+    internal enum TargetPathType
     {
         SameAsAsset = 0,
         ParentFolder = 1,

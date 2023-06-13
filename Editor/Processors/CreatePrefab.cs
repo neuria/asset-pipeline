@@ -30,8 +30,7 @@ namespace Daihenka.AssetPipeline.Processors
 
         public override void OnPostprocess(Object asset, string assetPath)
         {
-            var targetPath = prefabPathType.GetFolderPath(assetPath, prefabPath, targetFolder);
-            targetPath = Path.Combine(targetPath, $"{Path.GetFileNameWithoutExtension(assetPath)}.prefab");
+            var targetPath = Path.Combine(GetDestinationPath(assetPath), $"{Path.GetFileNameWithoutExtension(assetPath)}.prefab");
 
             var prefabInstance = PrefabUtility.InstantiatePrefab(asset) as GameObject;
 
@@ -72,6 +71,26 @@ namespace Daihenka.AssetPipeline.Processors
             DestroyImmediate(prefabInstance);
             ImportProfileUserData.AddOrUpdateProcessor(assetPath, this);
             Debug.Log($"[{GetName()}] Prefab created for <b>{assetPath}</b>");
+        }
+
+        string GetDestinationPath(string assetPath)
+        {
+            var destinationPath = prefabPath;
+            if (prefabPathType == TargetPathType.Absolute || prefabPathType == TargetPathType.Relative)
+            {
+                destinationPath = ReplaceVariables(destinationPath, assetPath);
+            }
+
+            destinationPath = prefabPathType.GetFolderPath(assetPath, destinationPath, targetFolder);
+            if (prefabPathType == TargetPathType.TargetFolder && !targetFolder)
+            {
+                Debug.LogWarning($"[{GetName()}] Target Folder is not set.  Creating prefab at <b>{destinationPath}</b>");
+            }
+
+            destinationPath = destinationPath.FixPathSeparators();
+            PathUtility.CreateDirectoryIfNeeded(destinationPath);
+
+            return destinationPath;
         }
     }
 }

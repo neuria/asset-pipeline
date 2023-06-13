@@ -27,12 +27,12 @@ namespace Daihenka.AssetPipeline.Processors
             DrawBaseProperties();
             EditorGUILayout.PropertyField(m_PathType);
             var enumValueIndex = m_PathType.enumValueIndex;
-            if (enumValueIndex == (int) MaterialPathType.Relative || enumValueIndex == (int) MaterialPathType.Absolute)
+            if (enumValueIndex == (int) TargetPathType.Relative || enumValueIndex == (int) TargetPathType.Absolute)
             {
                 EditorGUILayout.PropertyField(m_Destination);
                 DrawTemplateVariables();
             }
-            else if (enumValueIndex == (int) MaterialPathType.TargetFolder)
+            else if (enumValueIndex == (int) TargetPathType.TargetFolder)
             {
                 EditorGUILayout.PropertyField(m_TargetFolder, DaiGUIContent.destination);
             }

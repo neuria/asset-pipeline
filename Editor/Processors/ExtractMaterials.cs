@@ -10,7 +10,7 @@ namespace Daihenka.AssetPipeline.Processors
     [AssetProcessorDescription(typeof(Material), ImportAssetTypeFlag.Models)]
     public class ExtractMaterials : AssetProcessor
     {
-        [SerializeField] MaterialPathType pathType;
+        [SerializeField] TargetPathType pathType;
         [SerializeField] string destination;
         [SerializeField] DefaultAsset targetFolder;
         [SerializeField] FileExistsAction fileExistsAction;
@@ -65,13 +65,13 @@ namespace Daihenka.AssetPipeline.Processors
         string GetDestinationPath(string assetPath)
         {
             var destinationPath = destination;
-            if (pathType == MaterialPathType.Absolute || pathType == MaterialPathType.Relative)
+            if (pathType == TargetPathType.Absolute || pathType == TargetPathType.Relative)
             {
                 destinationPath = ReplaceVariables(destinationPath, assetPath);
             }
 
             destinationPath = pathType.GetFolderPath(assetPath, destinationPath, targetFolder);
-            if (pathType == MaterialPathType.TargetFolder && !targetFolder)
+            if (pathType == TargetPathType.TargetFolder && !targetFolder)
             {
                 Debug.LogWarning($"[{GetName()}] Target Folder was not set.  Extracting materials to <b>{destinationPath}</b>");
             }
