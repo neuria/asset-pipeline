@@ -61,6 +61,7 @@ namespace Daihenka.AssetPipeline.Processors
             if (enumValueName == TargetPathType.Relative.ToString())
             {
                 EditorGUILayout.PropertyField(m_PrefabPath, DaiGUIContent.destination);
+                DrawTemplateVariables();
             }
             else if (enumValueName == TargetPathType.TargetFolder.ToString())
             {
