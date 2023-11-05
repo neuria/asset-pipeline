@@ -333,14 +333,7 @@ namespace Daihenka.AssetPipeline.Import
         {
             foreach (var kvp in parentVariables)
             {
-                if (!variables.ContainsKey(kvp.Key))
-                {
-                    variables.Add(kvp.Key, kvp.Value.value);
-                }
-                else
-                {
-                    variables[kvp.Key] = kvp.Value.value;
-                }
+                variables[kvp.Key] = kvp.Value.value;
             }
         }
 

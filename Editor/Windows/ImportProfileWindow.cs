@@ -41,7 +41,7 @@ namespace Daihenka.AssetPipeline
         public static void ShowWindow(AssetImportProfile profile)
         {
             var windows = EditorWindowUtility.GetWindows<ImportProfileWindow>();
-            var window = windows.FirstOrDefault(x => x.m_Target == profile);
+            var window = Array.Find(windows, x => x.m_Target == profile);
             if (window)
             {
                 window.Focus();

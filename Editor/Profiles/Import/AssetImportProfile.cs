@@ -37,9 +37,9 @@ namespace Daihenka.AssetPipeline.Import
 
         bool IsExcludedPath(string assetPath)
         {
-            foreach (var exclusion in pathExclusions)
+            for (int i = 0; i < pathExclusions.Count; i++)
             {
-                if (exclusion.IsMatch(assetPath))
+                if (pathExclusions[i].IsMatch(assetPath))
                 {
                     return true;
                 }
@@ -68,8 +68,9 @@ namespace Daihenka.AssetPipeline.Import
         internal static IList<AssetImportProfile> GetProfileMatches(string assetPath)
         {
             var result = new List<AssetImportProfile>();
-            foreach (var profile in AllProfiles)
+            for (int i = 0; i < AllProfiles.Length; i++)
             {
+                var profile = AllProfiles[i];
                 if (profile != null && profile.IsMatch(assetPath))
                 {
                     result.Add(profile);
