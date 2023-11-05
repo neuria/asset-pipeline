@@ -212,9 +212,9 @@ namespace Daihenka.AssetPipeline
         public static GUIStyle ignoreCaseOff = s_IgnoreCaseOff ?? (s_IgnoreCaseOff = new GUIStyle {normal = new GUIStyleState {background = AssetDatabase.LoadAssetAtPath<Texture2D>($"{IconsFolderPath}IgnoreCaseOff@2x.png")}});
         public static GUIStyle roundedRect = s_RoundedRect ?? (s_RoundedRect = new GUIStyle("sv_iconselector_labelselection") {padding = new RectOffset(15, 15, 15, 15), margin = new RectOffset(0, 0, 0, 0), stretchHeight = false});
         public static GUIStyle addProcessorButton = s_AddProcessorButton ?? (s_AddProcessorButton = new GUIStyle("RL FooterButton") {fixedHeight = 32});
-        public static GUIStyle searchField = s_ToolbarSearchTextField ?? (s_ToolbarSearchTextField = new GUIStyle("ToolbarSeachTextFieldPopup"));
-        public static GUIStyle searchFieldCancelButton = s_ToolbarSearchCancelButton ?? (s_ToolbarSearchCancelButton = new GUIStyle("ToolbarSeachCancelButton"));
-        public static GUIStyle searchFieldCancelButtonEmpty = s_ToolbarSearchCancelButtonEmpty ?? (s_ToolbarSearchCancelButtonEmpty = new GUIStyle("ToolbarSeachCancelButtonEmpty"));
+        public static GUIStyle searchField = s_ToolbarSearchTextField ?? (s_ToolbarSearchTextField = new GUIStyle("ToolbarSearchTextFieldPopup"));
+        public static GUIStyle searchFieldCancelButton = s_ToolbarSearchCancelButton ?? (s_ToolbarSearchCancelButton = new GUIStyle("ToolbarSearchCancelButton"));
+        public static GUIStyle searchFieldCancelButtonEmpty = s_ToolbarSearchCancelButtonEmpty ?? (s_ToolbarSearchCancelButtonEmpty = new GUIStyle("ToolbarSearchCancelButtonEmpty"));
         public static GUIStyle toolbarButton = s_ToolbarButton ?? (s_ToolbarButton = new GUIStyle("ToolbarButton"));
     }
 }
