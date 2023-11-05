@@ -70,7 +70,7 @@ namespace Daihenka.AssetPipeline.Import
             var result = new List<AssetImportProfile>();
             foreach (var profile in AllProfiles)
             {
-                if (profile.IsMatch(assetPath))
+                if (profile != null && profile.IsMatch(assetPath))
                 {
                     result.Add(profile);
                 }
