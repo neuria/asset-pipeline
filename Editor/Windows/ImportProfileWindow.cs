@@ -288,7 +288,7 @@ namespace Daihenka.AssetPipeline
             }
 
             EditorGUI.LabelField(rect, "Processors", DaiGUIStyles.boldLabel);
-            var addProcessorButtonRect = new Rect(rect.x + rect.width - 88, rect.y, 80, EditorGUIUtility.singleLineHeight);
+            var addProcessorButtonRect = new Rect(rect.x + rect.width - 88, rect.y, 88, EditorGUIUtility.singleLineHeight);
             if (GUI.Button(addProcessorButtonRect, "Add Processor", DaiGUIStyles.label))
             {
                 OnAddAssetProcessorButtonClicked(assetFilter);
