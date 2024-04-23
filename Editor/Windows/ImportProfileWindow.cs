@@ -401,7 +401,7 @@ namespace Daihenka.AssetPipeline
             }
 
             EditorUtility.SetDirty(m_Target);
-            AssetDatabase.SaveAssets();
+            AssetDatabase.SaveAssetIfDirty(m_Target);
             AssetDatabase.Refresh();
             DestroyImmediate(assetProcessor, true);
             GUIUtility.ExitGUI();

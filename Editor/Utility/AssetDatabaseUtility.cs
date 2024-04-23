@@ -53,9 +53,8 @@ namespace Daihenka.AssetPipeline
         public static void AddObjectToUnityAsset(this Object objectToAdd, Object assetObject)
         {
             AssetDatabase.AddObjectToAsset(objectToAdd, assetObject);
-            AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(objectToAdd));
+            AssetDatabase.SaveAssetIfDirty(objectToAdd);
             AssetDatabase.Refresh();
-            AssetDatabase.SaveAssets();
         }
 
         public static void RemoveObjectFromUnityAsset(this Object obj, string parentAssetPath)
